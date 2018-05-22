@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SoloChana</string>
+    <string name="sos_button">S.O.S</string>
+    <string name="level_1_contacts">Level 1 Contacts</string>
+    <string name="level_2_contacts">Level 2 Contacts</string>
+    <string name="settings">Settings</string>
+</resources>
