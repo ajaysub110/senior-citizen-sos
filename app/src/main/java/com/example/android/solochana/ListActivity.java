@@ -1,9 +1,12 @@
 package com.example.android.solochana;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,16 +41,11 @@ public class ListActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Contact contact = new Contact();
-                contact.setName("Ajay");
-                contact.setPhone("7618739866");
-                contact.setLevel(1);
-
-                Realm db = Realm.getDefaultInstance();
-                db.beginTransaction();
-                db.insertOrUpdate(contact);
-                db.commitTransaction();
-                db.close();
+                Bundle bundle = new Bundle();
+                bundle.putInt("lvl",getIntent().getIntExtra("lvl",1));
+                InputDialogFragment inputDialogFragment = new InputDialogFragment();
+                inputDialogFragment.setArguments(bundle);
+                inputDialogFragment.show(getFragmentManager(),"add_contact");
             }
         });
     }
