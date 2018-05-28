@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SoloChana.iml" filepath="$PROJECT_DIR$/SoloChana.iml" />
+      <module fileurl="file://C:\Users\ajays\AppD\senior-citizen-sos\SoloChana.iml" filepath="C:\Users\ajays\AppD\senior-citizen-sos\SoloChana.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/senior-citizen-sos.iml" filepath="$PROJECT_DIR$/senior-citizen-sos.iml" />
     </modules>
   </component>
 </project>

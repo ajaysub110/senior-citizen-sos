@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.solochana.MainActivity">
+    tools:context="com.example.android.solochana.MainActivity"
+    android:background="#5D1049">
 
     <Button
         android:id="@+id/sos_button"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/oval_shape"
         android:text="@string/sos_button"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,17 +28,25 @@
             android:id="@+id/lv1_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/curved_rectangle"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:text="Level 1"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/lv2_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
+            android:background="@drawable/curved_rectangle"
             android:text="Level 2"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
