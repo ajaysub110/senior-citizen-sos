@@ -40,7 +40,7 @@ public class InputDialogFragment extends DialogFragment{
                         Contact contact = new Contact();
                         contact.setName(nameEdittext.getText().toString());
                         contact.setPhone(phoneEdittext.getText().toString());
-                        contact.setLevel(getArguments().getInt("lvl"));
+                        contact.setLevel(getArguments().getInt("level"));
 
                         Realm db = Realm.getDefaultInstance();
                         db.beginTransaction();

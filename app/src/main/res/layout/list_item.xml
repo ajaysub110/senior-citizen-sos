@@ -6,20 +6,34 @@
 
     <TextView
         android:id="@+id/name_textview"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:textColor="#000000"
+        android:text="Ajay"
         android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/phone_textview"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="7618739866"
         android:textSize="18sp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"/>
 
-    <TextView
-        android:id="@+id/phone_textview"
-        android:layout_width="200dp"
+    <Button
+        android:id="@+id/call_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"/>
+        android:text="Call"
+        android:textColor="#5D1049"
+        android:textSize="15sp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
 </LinearLayout>

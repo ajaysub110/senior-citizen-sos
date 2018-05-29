@@ -1,5 +1,9 @@
 package com.example.android.solochana;
 
+import android.app.Notification;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,15 +25,18 @@ public class RAdapter extends RecyclerView.Adapter<ContactsViewHolder> implement
 
     private ArrayList<Contact> contacts;
     private Realm db;
+    private Context context;
+    Intent intent;
 
-    public RAdapter(int lvl) {
+    public RAdapter(Context context, Intent intent) {
+        this.intent = intent;
         this.contacts = new ArrayList<>();
         db = Realm.getDefaultInstance();
-        loadData(lvl);
+        loadData(intent);
     }
 
-    public void loadData(int lvl) {
-        RealmQuery<Contact> query = db.where(Contact.class).equalTo("level", lvl);
+    public void loadData(Intent intent) {
+        RealmQuery<Contact> query = db.where(Contact.class).equalTo("level", intent.getIntExtra("level",1));
 
         final RealmResults<Contact> results = query.findAll();
 
@@ -54,14 +61,19 @@ public class RAdapter extends RecyclerView.Adapter<ContactsViewHolder> implement
     }
 
     @Override
-    public void onBindViewHolder(ContactsViewHolder holder, int position) {
+    public void onBindViewHolder(ContactsViewHolder holder, final int position) {
         holder.populateViews(this.contacts.get(position));
+        holder.addListeners(this.contacts.get(position));
+        if(intent.getAction().equals("ViewContacts")){
+            holder.callButton.setVisibility(View.GONE);
+        }
+        else {
+        }
     }
 
     @Override
     public void onChange(@NonNull RealmResults<Contact> results) {
-        for (Contact c :
-                results) {
+        for (Contact c : results) {
             contacts.add(db.copyFromRealm(c));
         }
         results.addChangeListener(this);

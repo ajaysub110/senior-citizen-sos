@@ -1,17 +1,13 @@
 package com.example.android.solochana;
 
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import io.realm.Realm;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -26,8 +22,9 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         bindViews();
-        addListeners();
-        populateViews();
+        Intent intent = getIntent();
+        addListeners(intent);
+        populateViews(intent);
     }
 
     private void bindViews() {
@@ -37,24 +34,28 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void addListeners() {
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("lvl",getIntent().getIntExtra("lvl",1));
-                InputDialogFragment inputDialogFragment = new InputDialogFragment();
-                inputDialogFragment.setArguments(bundle);
-                inputDialogFragment.show(getFragmentManager(),"add_contact");
-            }
-        });
+    private void addListeners(final Intent intent) {
+        if(intent.getAction().equals("ViewContacts")){
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("level",intent.getIntExtra("level",1));
+                    InputDialogFragment inputDialogFragment = new InputDialogFragment();
+                    inputDialogFragment.setArguments(bundle);
+                    inputDialogFragment.show(getFragmentManager(),"add_contact");
+                }
+            });
+        }
+        else {
+            addButton.setVisibility(View.GONE);
+        }
     }
 
-    void populateViews() {
-        titleTextview.setText(getIntent().getStringExtra("title"));
-        int lvl = getIntent().getIntExtra("lvl",1);
+    void populateViews(final Intent intent) {
+        titleTextview.setText(intent.getStringExtra("title"));
 
-        adapter = new RAdapter(lvl);
+        adapter = new RAdapter(ListActivity.this,intent);
         recyclerView.setAdapter(adapter);
     }
 }
