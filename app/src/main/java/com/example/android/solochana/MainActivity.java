@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         String messageString = "EMERGENCY! PLEASE CALL IMMEDIATELY!";
         SmsManager smsManager = SmsManager.getDefault();
         for(Contact c: results){
-//            smsManager.sendTextMessage(c.getPhone(),null,messageString, null,null);
+            smsManager.sendTextMessage(c.getPhone(),null,messageString, null,null);
         }
         Toast.makeText(MainActivity.this, "Sent Help message to all Level " + level + " contacts", Toast.LENGTH_SHORT).show();
     }
@@ -48,15 +48,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Realm db = Realm.getDefaultInstance();
                 RealmQuery<Contact> lv1query = db.where(Contact.class).equalTo("level",1);
-                RealmQuery<Contact> lv2query = db.where(Contact.class).equalTo("level",2);
 
                 RealmResults<Contact> lv1results = lv1query.findAll();
-                RealmResults<Contact> lv2results = lv2query.findAll();
 
                 smsContacts(1,lv1results);
                 Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 intent.putExtra("title", "Call Level 1 Contacts");
-                intent.putExtra("lvl", 1);
+                intent.putExtra("level", 1);
                 intent.setAction("CallContacts");
                 startActivity(intent);
             }
